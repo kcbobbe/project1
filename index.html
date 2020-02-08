@@ -11,6 +11,7 @@
     <script src="./itunes.js"></script>
     <script src="./bandsintown.js"></script>
     <script src="./tasteDive.js"></script>
+    <script src="assets/moment.js"></script>
   </head>
 
   <body>
@@ -27,7 +28,26 @@
         <!-- artist card end -->
 
         <!-- upcoming event card start -->
-
+        <container id="event-card">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title" id="eventCity"></p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <div id="eventVenue"></div>
+                <div id="lineup"></div>
+                <time id="eventDate"></time>
+                <br>
+                <div id="saleDate"></div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a id="facebook" class="card-footer-item"><img src="https://www.facebook.com/images/fb_icon_325x325.png" height="20px" width="20px"></a>
+              <a id="buyTickets" class="card-footer-item">Buy Tickets Here</a>
+            </footer>
+          </div>
+        </container>
         <!-- upcoming event card end -->
 
         <!-- related artists start -->
