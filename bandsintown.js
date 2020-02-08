@@ -22,9 +22,16 @@ function getEventData(artistName){
   }).then(function(response){
     $("#bandName").text(response[0].artist.name);
     $("#bandImg").attr("src", response[0].artist.image_url)
-    $("#eventDate").text(response[0].datetime);
+    var eventDate = moment.parseZone(response[0].datetime);
+    $("#eventDate").text("Concert date: " + eventDate._d);
     $("#buyTickets").attr("href", response[0].offers[0].url)
-    console.log(response)
+    $("#eventCity").text("Next event in: " + response[0].venue.city);
+    $("#eventVenue").text("Venue: " + response[0].venue.name);
+    $("#facebook").attr("href", response[0].artist.facebook_page_url);
+    var saleDate = moment.parseZone(response[0].on_sale_datetime);
+    $("#saleDate").text("Tickets go on sale " + saleDate._d);
+    $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
+    console.log(response);
 
   })
 }
