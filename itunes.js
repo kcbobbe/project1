@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   function getItunes(artistName){
     $.ajax({
-      url: "https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
+      url: "https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
       method:"GET"
     }).then(function(response){
       parsedResponse = JSON.parse(response);
