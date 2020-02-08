@@ -1,26 +1,55 @@
 $(document).ready(function() {
   
-  var artistName = "Twin Peaks";
+  var artistName = "Sons of Apollo";
+  var parsedResponse = "";
+
+  getItunes(artistName)
 
   function getItunes(artistName){
     $.ajax({
       url: "https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
       method:"GET"
     }).then(function(response){
-      var parsedResponse = JSON.parse(response);
+      parsedResponse = JSON.parse(response);
+      $("#artistName").text(parsedResponse.results[0].artistName)
       console.log(parsedResponse.results[0].previewUrl)
       // console.log(parsedResponse[0].previewUrl);
-      $("#sampleAudio").attr("src", parsedResponse.results[0].previewUrl);
-      $("#sampleAudio").attr("type", "audio/m4a")
-
-      $("#songName").text(parsedResponse.results[0].trackName);
-      $("#albumName").text(parsedResponse.results[0].collectionName);
-      $("#songImg").attr("src", parsedResponse.results[0].artworkUrl100);
-      console.log(JSON.parse(response))
+      for (var i = 0; i < parsedResponse.results.length; i++){
+        var newSongContainer = $("<tr>")
+        newSongContainer.attr("id", i)
+        var newSongNumber = $("<th>");
+        newSongNumber.text(i+1);
+        // newSongNumber.attr("id", i)
+        var newSongName = $("<td>");
+        newSongName.text(parsedResponse.results[i].trackName);
+        var newAlbumName = $("<td>");
+        newAlbumName.text(parsedResponse.results[i].collectionName);
+        console.log(newSongName)
+        console.log("why")
+        newSongContainer.append(newSongNumber,newSongName,newAlbumName);
+        $("#songContainer").append(newSongContainer)
+      }
+      getNowPlaying(0)
   
     })
   }
 
-  getItunes(artistName)
+  function getNowPlaying(index) {
+      $("#sampleAudio").attr("src", parsedResponse.results[index].previewUrl);
+      $("#sampleAudio").attr("type", "audio/m4a")
+      $("#songName").text(parsedResponse.results[index].trackName);
+      $("#albumName").text(parsedResponse.results[index].collectionName);
+      $("#songImg").attr("src", parsedResponse.results[index].artworkUrl100);
+  }
+
+  $("#songContainer").on('click', function(e){
+    e.preventDefault();
+      var parentElement = ($(e.target).parent())
+      console.log(parentElement[0].id)
+      getNowPlaying(parentElement[0].id)
+  })
+
   
   })
+
+  
