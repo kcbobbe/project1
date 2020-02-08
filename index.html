@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 1</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./itunes.js"></script>
+    <script src="./bandsintown.js"></script>
+    <script src="./tasteDive.js"></script>
+  </head>
+
+  <body>
+
+    <!-- insert nav bar content start -->
+    <nav></nav>
+    <!-- insert nav bar content end -->
+
+    <div class="columns">
+      <!-- left column start -->
+      <div class="column">
+        <!-- artist card start-->
+
+        <!-- artist card end -->
+
+        <!-- upcoming event card start -->
+
+        <!-- upcoming event card end -->
+
+        <!-- related artists start -->
+        <div class="box">
+          <p id="relatedArtists"></p>
+        </div>
+        <!-- related artists end -->
+
+      </div>
+      <!-- left column end -->
+
+      <!-- right column (itunes) start -->
+      <div class="column is-one-third">
+  
+        <section>
+          <div class="card">
+            <header class="card-header" >
+              <p class="card-header-title title" id="artistName"></p>
+            </header>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-100x100">
+                    <img id="songImg" alt="Album Art">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4" id="songName"></p>
+                  <p class="subtitle is-6" id="albumName"></p>
+                </div>
+              </div>
+              <div class="content">
+                <audio controls id="sampleAudio"></audio>
+                  <div class="table-container">
+                    <table class="table is-hoverable">
+                      <thead>
+                        <th></th>
+                        <th>Song Name</th>
+                        <th>Album</th>
+                        <th></th>
+                      </thead>
+                      <tbody  id="songContainer">
+                        <!-- songs rows are inserted here -->
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- right column (itunes) end -->
+
+    </div>
+    <!-- footer starts here -->
+    <footer class="footer">
+      
+    </footer>
+    <!-- footer ends here -->
+  </body>
+</html>

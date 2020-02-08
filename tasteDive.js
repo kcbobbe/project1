@@ -7,7 +7,7 @@ getRelated("Pink Floyd")
 function getRelated(artistName){
   $.ajax({
     dataType: "jsonp",
-    url: "https://tastedive.com/api/similar?q=" + artistName + "&?k=" + APIKEY,
+    url: "https://tastedive.com/api/similar?q=" + artistName + "&?k=" + APIKEY + "&limit=5",
     method:"GET"
   }).then(function(response){
     console.log(response)
