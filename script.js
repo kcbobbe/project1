@@ -1,15 +1,18 @@
 $(document).ready(function() {
 
-  // related artist API
+  //artist name should be set from what is entered from the search bar
+  var artistName = "Twin Peaks";
+
+  // related artist API -- Taste Dive
+
+  var tasteDiveApiKey = "355215-KatieBob-H8EY3UTU"
   
-  var APIKEY = "355215-KatieBob-H8EY3UTU"
-  
-  getRelated("Pink Floyd")
+  getRelated(artistName)
   
   function getRelated(artistName){
     $.ajax({
       dataType: "jsonp",
-      url: "https://tastedive.com/api/similar?q=" + artistName + "&?k=" + APIKEY + "&limit=5",
+      url: "https://tastedive.com/api/similar?q=" + artistName + "&k=" + tasteDiveApiKey + "&type=music" + "&limit=5",
       method:"GET"
     }).then(function(response){
       console.log(response)
@@ -36,14 +39,14 @@ $(document).ready(function() {
   
 // iTunes API
   
-    var artistName = "Sons of Apollo";
+    // var artistName = "Sons of Apollo";
     var parsedResponse = "";
   
     getItunes(artistName)
   
     function getItunes(artistName){
       $.ajax({
-        url: "https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
+        url: "https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
         method:"GET"
       }).then(function(response){
         parsedResponse = JSON.parse(response);
@@ -61,7 +64,6 @@ $(document).ready(function() {
           var newAlbumName = $("<td>");
           newAlbumName.text(parsedResponse.results[i].collectionName);
           console.log(newSongName)
-          console.log("why")
           newSongContainer.append(newSongNumber,newSongName,newAlbumName);
           $("#songContainer").append(newSongContainer)
         }
@@ -86,33 +88,42 @@ $(document).ready(function() {
     })
   
       // bands in town api 
-      var APIKEY = "codingbootcamp";
-      
-      var artistName = "Twin Peaks";
-      
-      // $.ajax({
-      //   url: "https://rest.bandsintown.com/artists/" + artistName + "?app_id=" + APIKEY,
-      //   method: "GET"
-      // }).then(function(response){
-      //   $("#bandName").text(response.name);
-      //   $("#bandImg").attr("src", response.image_url)
-      //   console.log(response)
-      //   getEventData()
-      // })
-      
-      getEventData(artistName)
-      
-      function getEventData(artistName){
-        $.ajax({
-          url: "https://rest.bandsintown.com/artists/" + artistName + "/events/?app_id=" + APIKEY,
-          method:"GET"
-        }).then(function(response){
-          $("#bandName").text(response[0].artist.name);
-          $("#bandImg").attr("src", response[0].artist.image_url)
-          $("#eventDate").text(response[0].datetime);
-          $("#buyTickets").attr("href", response[0].offers[0].url)
-          console.log(response)
-      
-        })
-      }
+        var bandsInTownApiKey = "codingbootcamp";
+        
+        // var artistName = "Twin Peaks";
+        
+        // $.ajax({
+        //   url: "https://rest.bandsintown.com/artists/" + artistName + "?app_id=" + APIKEY,
+        //   method: "GET"
+        // }).then(function(response){
+        //   $("#bandName").text(response.name);
+        //   $("#bandImg").attr("src", response.image_url)
+        //   console.log(response)
+        //   getEventData()
+        // })
+        
+        getEventData(artistName)
+        
+        function getEventData(artistName){
+          $.ajax({
+            url: "https://rest.bandsintown.com/artists/" + artistName + "/events/?app_id=" + bandsInTownApiKey,
+            method:"GET"
+          }).then(function(response){
+            $("#bandName").text(response[0].artist.name);
+            $("#bandImg").attr("src", response[0].artist.image_url)
+            var eventDate = moment.parseZone(response[0].datetime);
+            $("#eventDate").text("Concert date: " + eventDate._d);
+            $("#buyTickets").attr("href", response[0].offers[0].url)
+            $("#eventCity").text("Next event in: " + response[0].venue.city);
+            $("#eventVenue").text("Venue: " + response[0].venue.name);
+            $("#facebook").attr("href", response[0].artist.facebook_page_url);
+            var saleDate = moment.parseZone(response[0].on_sale_datetime);
+            $("#saleDate").text("Tickets go on sale " + saleDate._d);
+            $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
+            console.log(response);
+        
+          })
+        }
+        
+        
     })
