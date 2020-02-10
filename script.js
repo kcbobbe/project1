@@ -10,6 +10,7 @@ $(document).ready(function() {
   getRelated(artistName)
   
   function getRelated(artistName){
+    $("#relatedArtists").text("");
     $.ajax({
       dataType: "jsonp",
       url: "https://tastedive.com/api/similar?q=" + artistName + "&k=" + tasteDiveApiKey + "&type=music" + "&limit=5",
@@ -32,8 +33,9 @@ $(document).ready(function() {
       e.preventDefault();
       var artist = (e.target.id);
       console.log(artist);
-      //itunesSearch(artistName)
-      //bandsInTownSearch(artistName)
+      getItunes(artist);
+      getEventData(artist);
+      getRelated(artist);
     }
   })
   
@@ -45,6 +47,7 @@ $(document).ready(function() {
     getItunes(artistName)
   
     function getItunes(artistName){
+      $("#songContainer").text("");
       $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=$" + artistName +"&media=music" + "&limit=5",
         method:"GET"
@@ -109,6 +112,7 @@ $(document).ready(function() {
             url: "https://rest.bandsintown.com/artists/" + artistName + "/events/?app_id=" + bandsInTownApiKey,
             method:"GET"
           }).then(function(response){
+            (console.log("bands in town response", response))
             $("#bandName").text(response[0].artist.name);
             $("#bandImg").attr("src", response[0].artist.image_url)
             var eventDate = moment.parseZone(response[0].datetime);
