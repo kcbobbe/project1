@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .active-song{
   font-weight: 500;
   cursor: default;
@@ -7,3 +8,47 @@
   cursor: pointer;
 }
 
+=======
+html * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#navTitle {
+    font-size: 32px;
+}
+
+.button {
+    margin-left: 5px;
+}
+
+#bandName {
+    font-size: 50px;
+    line-height: 300px;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+    float: right;
+    margin-right: 20%;
+}
+
+#bandImg {
+    width: 50%;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 1025px) {
+    #searchField {
+        width: 200px;
+    }
+
+    #search-button {
+        width: 50px;
+    }
+
+    #bandName {
+        font-size: 40px;
+        line-height: 40px;
+        height: 50px;    
+    }
+}    
+>>>>>>> 7aaa82801fb35dd788955bb6af50002ea2a0aa0f
