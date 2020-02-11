@@ -58,7 +58,7 @@ $(document).ready(function() {
         // console.log(parsedResponse[0].previewUrl);
         for (var i = 0; i < parsedResponse.results.length; i++){
           var newSongContainer = $("<tr>")
-          newSongContainer.attr("id", i)
+          newSongContainer.attr("data-id", i)
           var newSongNumber = $("<th>");
           newSongNumber.text(i+1);
           // newSongNumber.attr("id", i)
@@ -85,9 +85,11 @@ $(document).ready(function() {
   
     $("#songContainer").on('click', function(e){
       e.preventDefault();
-        var parentElement = ($(e.target).parent())
-        console.log(parentElement[0].id)
-        getNowPlaying(parentElement[0].id)
+        $("#songContainer").children().removeClass("active-song")
+        var parentElement = ($(e.target).parent());
+        parentElement.attr("class", "active-song");
+       // console.log(parentElement.attr("data-id"))
+        getNowPlaying(parentElement.attr("data-id"))
     })
   
       // bands in town api 

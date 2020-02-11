@@ -1,0 +1,9 @@
+.active-song{
+  font-weight: 500;
+  cursor: default;
+}
+
+#songContainer:hover{
+  cursor: pointer;
+}
+
