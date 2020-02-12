@@ -15,18 +15,23 @@ html * {
     font-size: 32px;
 }
 
+.navbar.is-info {
+    background-color: black !important;
+}
+
 .button {
     margin-left: 5px;
 }
 
 #bandName {
     font-size: 50px;
-    line-height: 300px;
+    line-height: 100px;
     text-align: center;
     height: 300px;
     width: 300px;
     float: right;
     margin-right: 20%;
+    margin-top: 60px;
 }
 
 #bandImg {
@@ -54,3 +59,6 @@ html * {
   margin-top: 2em;
 }
 
+.hidden {
+  display: none;
+}
