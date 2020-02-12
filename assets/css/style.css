@@ -1,3 +1,12 @@
+.active-song{
+  font-weight: bold;
+  cursor: default;
+}
+
+#songContainer:hover{
+  cursor: pointer;
+}
+
 html * {
     font-family: 'Poppins', sans-serif !important;
 }
@@ -40,3 +49,8 @@ html * {
         height: 50px;    
     }
 }    
+/* recommended-artists box */
+.recommended-artists {
+  margin-top: 2em;
+}
+
