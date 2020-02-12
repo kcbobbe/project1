@@ -10,32 +10,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="./itunes.js"></script> -->
     <link rel="stylesheet" href="../project1/assets/css/style.css"></link>
+    <link rel="stylesheet" href="../project1/assets/css/landingPage.css"> 
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="logo">
-
+    <section class="wrapper">
+      <div class="panel">
+        <h1 class="main-page-title">
+          Discover Live Events Near You
+        </h1>
+        <p>
+          Search your favorite artists and see if they have any upcoming events
+        </p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input" type="text" placeholder="Search Song or Artist">
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </p>
+          <button class="button is-link">Search</button>
         </div>
       </div>
-    </header>
+    </section>
+    
 
-    <nav class="panel">
-      <div class="panel-block">
-        <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="Search Song or Artist">
-          <span class="icon is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </span>
+    <footer>
+      <div class="footer-container">
+        <p class="footer-info">
+          <b>Created by:</b> Katie Bobbe, Rachel Humble, Tyler Buck, & Omar Ibrahim
+          <br>
+        <b>With the use of:</b> moment.js, jquery, Bands In Town API & iTunes API
         </p>
-        <button class="button is-link is-outlined">Search</button>
       </div>
-      <div class="panel-block">
-        <button class="button is-link is-outlined is-fullwidth">
-          Reset Filters
-        </button>
-      </div>
-    </nav>
+    </footer>
   </body>
 </html>
