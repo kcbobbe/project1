@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
   //artist name should be set from what is entered from the search bar
-  var artistName = "Twin Peaks";
+  var initialArtist = "Twin Peaks";
 
   // related artist API -- Taste Dive
 
   var tasteDiveApiKey = "355215-KatieBob-H8EY3UTU"
   
-  getRelated(artistName)
+  getRelated(initialArtist)
   
   function getRelated(artistName){
     $("#relatedArtists").text("");
@@ -44,7 +44,7 @@ $(document).ready(function() {
     // var artistName = "Sons of Apollo";
     var parsedResponse = "";
   
-    getItunes(artistName)
+    getItunes(initialArtist)
   
     function getItunes(artistName){
       $("#songContainer").text("");
@@ -58,7 +58,7 @@ $(document).ready(function() {
         // console.log(parsedResponse[0].previewUrl);
         for (var i = 0; i < parsedResponse.results.length; i++){
           var newSongContainer = $("<tr>")
-          newSongContainer.attr("id", i)
+          newSongContainer.attr("data-id", i)
           var newSongNumber = $("<th>");
           newSongNumber.text(i+1);
           // newSongNumber.attr("id", i)
@@ -85,9 +85,11 @@ $(document).ready(function() {
   
     $("#songContainer").on('click', function(e){
       e.preventDefault();
-        var parentElement = ($(e.target).parent())
-        // console.log(parentElement[0].id)
-        getNowPlaying(parentElement[0].id)
+        $("#songContainer").children().removeClass("active-song")
+        var parentElement = ($(e.target).parent());
+        parentElement.attr("class", "active-song");
+       // console.log(parentElement.attr("data-id"))
+        getNowPlaying(parentElement.attr("data-id"))
     })
   
       // bands in town api 
@@ -95,7 +97,7 @@ $(document).ready(function() {
         
         // var artistName = "Twin Peaks";
         
-        getEventData(artistName)
+        getEventData(initialArtist)
         var hasEvent = "";
 
         function getArtistData(artistName) {
@@ -109,9 +111,11 @@ $(document).ready(function() {
           });
         }
 
-        getArtistData(artistName);
+        getArtistData(initialArtist);
         console.log("event available?" + hasEvent);
-
+        
+        getEventData(initialArtist)
+        
         function getEventData(artistName){
           $.ajax({
             url: "https://rest.bandsintown.com/artists/" + artistName + "/events/?app_id=" + bandsInTownApiKey,
@@ -121,8 +125,7 @@ $(document).ready(function() {
             hasEvent = response[0];
             console.log("event avail?", hasEvent);
           
-            // $("#bandName").text(response[0].artist.name);
-            // $("#bandImg").attr("src", response[0].artist.image_url);
+            
             if(!hasEvent) {
               console.log("no event");
               getArtistData(artistName);
@@ -135,6 +138,8 @@ $(document).ready(function() {
               $("#facebook").attr("href", "https://facebook.com");
             } else {
               console.log("YES EVENT");
+              $("#bandName").text(response[0].artist.name);
+              $("#bandImg").attr("src", response[0].artist.image_url);
               var eventDate = moment.parseZone(response[0].datetime);
               $("#eventDate").text("Concert date: " + eventDate._d);
               $("#buyTickets").attr("href", response[0].offers[0].url)
@@ -157,4 +162,18 @@ $(document).ready(function() {
       // } else {
       // };
         
-    });
+        
+
+    //submit search
+    $("#search-form").on('submit',function(e){
+      e.preventDefault();
+      var artistSearch = $("#searchField").val();
+      console.log(artistSearch)
+      getEventData(artistSearch);
+      getItunes(artistSearch);
+      getRelated(artistSearch);
+      $("#searchField").val("");
+    })
+
+
+    })
