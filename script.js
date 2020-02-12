@@ -182,6 +182,7 @@ $(document).ready(function() {
     $("#landingPageForm").on('submit', function(e){
       e.preventDefault();
       var artistSearch2 = $("#landingSearchField").val();
+      $("#landingSearchField").val("");
       $("#landingPage").css("display","none");
       $("#mainPage").css("display","");
       getEventData(artistSearch2)
@@ -193,7 +194,6 @@ $(document).ready(function() {
     $("#search-form").on('submit',function(e){
       e.preventDefault();
       var artistSearch = $("#searchField").val();
-      console.log(artistSearch)
       getEventData(artistSearch);
       getItunes(artistSearch);
       getRelated(artistSearch);
@@ -234,60 +234,12 @@ $(document).ready(function() {
         newEventArtist.text(favoriteEvents[i][1]);
         var newEventLocation = $("<td>");
         newEventLocation.text(favoriteEvents[i][2]);
-        // adding modal to each row -- I played around with this idea but will probably end up deleting it
-        // var newModal = $("<div>").addClass("modal");
-        // <div class="modal">
-        // var newModalBackground = $("<div>").addClass("modal-background");
-        // var newModalContent = $("<div>").addClass("modal-content");
-        // creating modal main
-        // var newModalMain = $("<div>").addClass("card");
-        // var newHeader = $("<p>").addClass("card-header-title").text(favoriteEvents[i][1]);    
-        // var newCardContent = $("<div>").addClass("card-content");
-        // var newCardMain = $("<div>").addClass("content").text(favoriteEvents[i][2]);
-        // var newCardDate = $("<div>").text((moment(favoriteEvents[i][0]).format("MM/DD/YYYY")));
-        // var viewArtist = $("<button>").text("View Artist").attr("id","viewArtist").addClass("btn btn-info is-large");
-        // viewArtist.attr("data-artist", favoriteEvents[i][1]);
-        // var removeFromEvents = $("<button>").text("Remove Event").attr("id","removeEvent").addClass("btn btn-danger is-large");
-        // newCardContent.append(newCardMain, newCardDate, viewArtist, removeFromEvents);
-        // newModalMain.append(newHeader, newCardContent);
-        // newModalContent.append(newModalMain);
-          // <!-- Any other Bulma elements you want -->
-        // var newModalClose = $("<div>").addClass("modal-close is-large").attr("aria-label", "close")
-        // newModal.append(newModalBackground, newModalContent, newModalClose);
         newEventContainer.append(newEventDate,newEventArtist,newEventLocation);
         $("#favoriteEventsContainer").append(newEventContainer)
         }
       }
 
     }
-
-    $("#favoriteEventsContainer").on('click', function(e){
-      e.preventDefault();
-      ($(e.target).parent()).children(".modal").addClass("is-active");
-      //   var parentElement = ($(e.target).parent());
-      //   parentElement.attr("class", "active-song");
-      //  // console.log(parentElement.attr("data-id"))
-      //   getNowPlaying(parentElement.attr("data-id"))
-    })
-
-    $("#viewArtist").on('click', function(e){
-      e.preventDefault();
-      // var viewArtistName = e.target.parent().attr("data-artist")
-      console.log(e.target, 'e.target');
-      console.log(click)
-      // console.log(e.target.attr("data-artist"))
-      // $(".modal").removeClass('is-active');
-      // getItunes(viewArtistName);
-      // getEventData(viewArtistName);
-      // getRelated(viewArtistName);
-
-    })
-  
-
-    // $(".modal-close").on('click', function(e){
-    //   e.preventDefault();
-    //   $(".modal").removeClass('is-active');
-    // })
 
     $("#clearEvents").on('click', function(e){
       e.preventDefault();
@@ -299,6 +251,12 @@ $(document).ready(function() {
       $("#favoriteEventsContainer").text("");
       localStorage.clear();
     }
+
+    $("#backToLanding").on('click', function(e){
+      e.preventDefault();
+      $("#landingPage").css("display","");
+      $("#mainPage").css("display","none");
+    })
 
     function compare(a, b) {
       if (a[0] > b[0]) return 1;
