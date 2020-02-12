@@ -146,7 +146,7 @@
         <!-- left column end -->
 
         <!-- right column (itunes) start -->
-        <div class="column is-two-fifths-desktop">
+        <div class="column">
     
           <section>
             <div class="card">
@@ -190,12 +190,12 @@
             <div class="box">
               <div class="content">
                 <div class="table-container">
-                  <table class="table is-hoverable">
+                  <table class="table is-striped">
                     <p class="subtitle is-12" style="text-align:center"><strong>Your Saved Events</strong></p>
                     <thead>
                       <th>Date</th>
                       <th>Artist</th>
-                      <th>Location</th>
+                      <th>Venue</th>
                       <tbody id="favoriteEventsContainer">
                         <!-- event rows are inserted here -->
                       </tbody>
@@ -204,6 +204,9 @@
                       <!-- songs rows are inserted here -->
                     </tbody>
                   </table>
+                  <div style="text-align:center">
+                    <button class="button is-danger is-small is-outlined" id="clearEvents">Clear Events</button>
+                  </div>
                 </div>
               </div>
             </div>

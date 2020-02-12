@@ -207,6 +207,7 @@ $(document).ready(function() {
       // current work around for eventInfo pointing to a reference, not value
       // if I just push eventInfo to favoriteEvents, each time eventInfo changes, all of the values pointing to eventInfo change to most recent assignment
       favoriteEvents.push(Object.values(eventInfo));
+      favoriteEvents.sort(compare);
       createFavoriteEvents();
       localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
       console.log('click')
@@ -220,6 +221,8 @@ $(document).ready(function() {
       $("#favoriteEventsSection").css("display", "");
       $("#favoriteEventsContainer").text("");
       for (var i = 0; i < favoriteEvents.length; i++){
+        if ((moment(favoriteEvents[i][0])).format("YYYYMMDD") > (moment().format("YYYYMMDD"))){
+        console.log("date-difference", (moment(favoriteEvents[i][0]).format("YYYYMMDD") > (moment().format("YYYYMMDD"))));
         var newEventContainer = $("<tr>")
         newEventContainer.attr("data-event", i)
         var newEventDate = $("<td>");
@@ -229,11 +232,77 @@ $(document).ready(function() {
         newEventArtist.text(favoriteEvents[i][1]);
         var newEventLocation = $("<td>");
         newEventLocation.text(favoriteEvents[i][2]);
-        // console.log(newSongName)
+        // adding modal to each row -- I played around with this idea but will probably end up deleting it
+        // var newModal = $("<div>").addClass("modal");
+        // <div class="modal">
+        // var newModalBackground = $("<div>").addClass("modal-background");
+        // var newModalContent = $("<div>").addClass("modal-content");
+        // creating modal main
+        // var newModalMain = $("<div>").addClass("card");
+        // var newHeader = $("<p>").addClass("card-header-title").text(favoriteEvents[i][1]);    
+        // var newCardContent = $("<div>").addClass("card-content");
+        // var newCardMain = $("<div>").addClass("content").text(favoriteEvents[i][2]);
+        // var newCardDate = $("<div>").text((moment(favoriteEvents[i][0]).format("MM/DD/YYYY")));
+        // var viewArtist = $("<button>").text("View Artist").attr("id","viewArtist").addClass("btn btn-info is-large");
+        // viewArtist.attr("data-artist", favoriteEvents[i][1]);
+        // var removeFromEvents = $("<button>").text("Remove Event").attr("id","removeEvent").addClass("btn btn-danger is-large");
+        // newCardContent.append(newCardMain, newCardDate, viewArtist, removeFromEvents);
+        // newModalMain.append(newHeader, newCardContent);
+        // newModalContent.append(newModalMain);
+          // <!-- Any other Bulma elements you want -->
+        // var newModalClose = $("<div>").addClass("modal-close is-large").attr("aria-label", "close")
+        // newModal.append(newModalBackground, newModalContent, newModalClose);
         newEventContainer.append(newEventDate,newEventArtist,newEventLocation);
         $("#favoriteEventsContainer").append(newEventContainer)
+        }
       }
+
     }
 
+    $("#favoriteEventsContainer").on('click', function(e){
+      e.preventDefault();
+      ($(e.target).parent()).children(".modal").addClass("is-active");
+      //   var parentElement = ($(e.target).parent());
+      //   parentElement.attr("class", "active-song");
+      //  // console.log(parentElement.attr("data-id"))
+      //   getNowPlaying(parentElement.attr("data-id"))
+    })
+
+    $("#viewArtist").on('click', function(e){
+      e.preventDefault();
+      // var viewArtistName = e.target.parent().attr("data-artist")
+      console.log(e.target, 'e.target');
+      console.log(click)
+      // console.log(e.target.attr("data-artist"))
+      // $(".modal").removeClass('is-active');
+      // getItunes(viewArtistName);
+      // getEventData(viewArtistName);
+      // getRelated(viewArtistName);
+
+    })
+  
+
+    // $(".modal-close").on('click', function(e){
+    //   e.preventDefault();
+    //   $(".modal").removeClass('is-active');
+    // })
+
+    $("#clearEvents").on('click', function(e){
+      e.preventDefault();
+      clearEvents();
+    })
+
+    function clearEvents(){
+      $("#favoriteEventsSection").css("display", "none");
+      $("#favoriteEventsContainer").text("");
+      localStorage.clear();
+    }
+
+    function compare(a, b) {
+      if (a[0] > b[0]) return 1;
+      if (b[0] > a[0]) return -1;
+    
+      return 0;
+    }
 
   })
