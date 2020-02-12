@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold; 
+}
+p {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+body{
+    padding: 0;
+    background-image: url("../imgs/backgroundLP.jpg");
+    background-size: cover;
+}
+
+header {
+    background-color: #444;
+    height: 40px;
+}
+
+footer .footer-container{
+    position: fixed;
+    border-top: 1px solid grey;
+    text-align: center;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    padding-bottom: 20px 0; 
+    
+}
+
+footer p {
+    font-size: 12px;
+}
+
+.wrapper {
+    height: calc(100vh - 60px);
+    padding-top: calc(50vh - 190px);
+}
+
+.wrapper .panel {
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 2px solid;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, .5);
+}
+
