@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 .active-song{
-  font-weight: 500;
+  font-weight: bold;
   cursor: default;
 }
 
@@ -8,7 +7,6 @@
   cursor: pointer;
 }
 
-=======
 html * {
     font-family: 'Poppins', sans-serif !important;
 }
@@ -51,4 +49,8 @@ html * {
         height: 50px;    
     }
 }    
->>>>>>> 7aaa82801fb35dd788955bb6af50002ea2a0aa0f
+/* recommended-artists box */
+.recommended-artists {
+  margin-top: 2em;
+}
+

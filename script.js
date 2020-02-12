@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
   //artist name should be set from what is entered from the search bar
-  var artistName = "Twin Peaks";
+  var initialArtist = "Twin Peaks";
 
   // related artist API -- Taste Dive
 
   var tasteDiveApiKey = "355215-KatieBob-H8EY3UTU"
   
-  getRelated(artistName)
+  getRelated(initialArtist)
   
   function getRelated(artistName){
     $("#relatedArtists").text("");
@@ -44,7 +44,7 @@ $(document).ready(function() {
     // var artistName = "Sons of Apollo";
     var parsedResponse = "";
   
-    getItunes(artistName)
+    getItunes(initialArtist)
   
     function getItunes(artistName){
       $("#songContainer").text("");
@@ -107,7 +107,7 @@ $(document).ready(function() {
         //   getEventData()
         // })
         
-        getEventData(artistName)
+        getEventData(initialArtist)
         
         function getEventData(artistName){
           $.ajax({
@@ -132,4 +132,17 @@ $(document).ready(function() {
         }
         
         
+
+    //submit search
+    $("#search-form").on('submit',function(e){
+      e.preventDefault();
+      var artistSearch = $("#searchField").val();
+      console.log(artistSearch)
+      getEventData(artistSearch);
+      getItunes(artistSearch);
+      getRelated(artistSearch);
+      $("#searchField").val("");
+    })
+
+
     })

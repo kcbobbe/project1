@@ -58,22 +58,27 @@
               <hr class="navbar-divider">
               <a class="navbar-item">
                 Report an issue -->
-              </a>
             </div>
           </div>
-        </div>
     
         <div class="navbar-end">
           <div class="navbar-item">
-            <input class="input" id="searchField" type="text" placeholder="Search">
-            <button class="button" id="search-button">
-              <div class="icon is-small">
-                <img src="https://img.icons8.com/metro/26/000000/search.png">
+            <form id="search-form">
+              <div class="field has-addons">
+              <div class="control">
+                <input class="input" id="searchField" type="text" placeholder="Search">
               </div>
-            </button>
+              <div class="control">
+                <button class="button" id="search-button" type="submit">
+                  <div class="icon is-small">
+                    <img src="https://img.icons8.com/metro/26/000000/search.png">
+                  </div>
+                </button>
+              </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
     </nav>
     <!-- insert nav bar content end -->
     <!-- container div wraps main content, excluding nav and footer -->
@@ -140,7 +145,7 @@
         <!-- left column end -->
 
         <!-- right column (itunes) start -->
-        <div class="column is-one-third-desktop">
+        <div class="column is-two-fifths-desktop">
     
           <section>
             <div class="card">
@@ -148,7 +153,7 @@
                 <p class="card-header-title title" id="artistName"></p>
               </header> -->
               <div class="card-content">
-                <div class="media">
+                <div class="media level">
                   <div class="media-left">
                     <figure class="image is-100x100">
                       <img id="songImg" alt="Album Art">
