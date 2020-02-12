@@ -59,3 +59,10 @@ html * {
   margin-top: 2em;
 }
 
+.hidden {
+  display: none;
+}
+
+#favoriteEventsSection {
+  margin-top: 2em;
+}
