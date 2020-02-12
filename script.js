@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+  // object is saved with the event information for the current search
+  var eventInfo = {
+    date: "",
+    artist: "",
+    location: ""
+  }
+  // array of objects to be stored and retrieved in local storage (saved events)
+  // local storage setup
+  if(!localStorage.getItem("favoriteEvents")){
+    var favoriteEvents = [];
+  } else{
+    var favoriteEvents = JSON.parse(localStorage.getItem("favoriteEvents"));
+    // localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
+  }
+  // creating the upcoming events box
+
+  function createEventFavorites(){
+    for (i = 0; i < favoriteEvents.length; i++){
+
+    }
+  }
+
   //artist name should be set from what is entered from the search bar
   var initialArtist = "Twin Peaks";
 
@@ -127,7 +149,11 @@ $(document).ready(function() {
             $("#saleDate").text("Tickets go on sale " + saleDate._d);
             $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
             console.log(response);
-        
+            //
+            eventInfo.artist = response[0].artist.name;
+            eventInfo.date = response[0].datetime;
+            eventInfo.location = response[0].venue.name
+            console.log(eventInfo, "event info")
           })
         }
         
@@ -145,4 +171,24 @@ $(document).ready(function() {
     })
 
 
+   
+
+    // add event to favorites
+    $("#addToEvents").on('click', function(e){
+      e.preventDefault();
+      // current work around for eventInfo pointing to a reference, not value
+      // if I just push eventInfo to favoriteEvents, each time eventInfo changes, all of the values pointing to eventInfo change to most recent assignment
+      favoriteEvents.push(Object.values(eventInfo));
+      createFavoriteEvents();
+      localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
+      console.log('click')
+      console.log(JSON.parse(localStorage.getItem("favoriteEvents")), "from local storage")
+      console.log(favoriteEvents, "these are my favorite events")
+
     })
+
+    createFavoriteEvents() {
+      
+    }
+
+  })
