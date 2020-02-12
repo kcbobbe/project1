@@ -12,14 +12,8 @@ $(document).ready(function() {
     var favoriteEvents = [];
   } else{
     var favoriteEvents = JSON.parse(localStorage.getItem("favoriteEvents"));
+    createFavoriteEvents()
     // localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
-  }
-  // creating the upcoming events box
-
-  function createEventFavorites(){
-    for (i = 0; i < favoriteEvents.length; i++){
-
-    }
   }
 
   //artist name should be set from what is entered from the search bar
@@ -158,7 +152,7 @@ $(document).ready(function() {
               $("#lineup").text("");
               $("#saleDate").text("");
               $("#facebook").attr("href", "https://facebook.com");
-              $("#addToEvents").removeClass("hidden")
+              $("#addToEvents").css("display","none");
             } else {
               console.log("YES EVENT");
               $("#bandName").text(response[0].artist.name);
@@ -172,7 +166,7 @@ $(document).ready(function() {
               var saleDate = moment.parseZone(response[0].on_sale_datetime);
               $("#saleDate").text("Tickets go on sale " + saleDate._d);
               $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
-              $("#addToEvents").addClass("hidden");
+              $("#addToEvents").css("display","");
                           //
               eventInfo.artist = response[0].artist.name;
               eventInfo.date = response[0].datetime;
@@ -218,11 +212,28 @@ $(document).ready(function() {
       console.log('click')
       console.log(JSON.parse(localStorage.getItem("favoriteEvents")), "from local storage")
       console.log(favoriteEvents, "these are my favorite events")
+      createFavoriteEvents()
 
     })
 
-    // createFavoriteEvents() {
-      
-    // }
+    function createFavoriteEvents() {
+      $("#favoriteEventsSection").css("display", "");
+      $("#favoriteEventsContainer").text("");
+      for (var i = 0; i < favoriteEvents.length; i++){
+        var newEventContainer = $("<tr>")
+        newEventContainer.attr("data-event", i)
+        var newEventDate = $("<td>");
+        var parsedDate = moment(favoriteEvents[i][0]).format("MM/DD/YYYY")
+        newEventDate.text(parsedDate);
+        var newEventArtist = $("<td>");
+        newEventArtist.text(favoriteEvents[i][1]);
+        var newEventLocation = $("<td>");
+        newEventLocation.text(favoriteEvents[i][2]);
+        // console.log(newSongName)
+        newEventContainer.append(newEventDate,newEventArtist,newEventLocation);
+        $("#favoriteEventsContainer").append(newEventContainer)
+      }
+    }
+
 
   })
