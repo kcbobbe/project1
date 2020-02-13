@@ -61,7 +61,7 @@
     <!-- search results page start -->
     <div id="mainPage" style="display:none">
     <!-- insert nav bar content start -->
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" id="backToLanding">
           <h1 id="navTitle"> BandiFi </h1>
@@ -102,18 +102,25 @@
         <div class="column">
           <!-- artist card start-->
 
-          <div class="card artist-card">
-            <div class="card-content" id="artist-card">
-              <article class="media">
-                <figure class="media-left" id="media">
-                  <div class="card-image">              
-                    <p class="image">
-                      <img id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">  
-                    </p> 
-                  </div>                     
-                </figure>
-                  <h1 class="title is-4" id="bandName"></h1>           
-              </article>
+    <div class="columns">
+      <!-- left column start -->
+      <div class="column">
+        <!-- artist card start-->
+        <div class="card">
+          <div class="media-content">
+            <p class="title is-4" id="bandName"></p>
+            <div class="card-image">
+              <figure class="image is-2by2">
+                <img class="is-rounded" id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">
+              </figure>
+            </div>
+            <div class="card-content">
+          
+              <div class="content">
+                <div id="bandAbout">
+                  
+                </div>
+              </div>              
             </div>
           </div>
         
