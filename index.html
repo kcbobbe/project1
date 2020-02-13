@@ -61,7 +61,7 @@
     <!-- search results page start -->
     <div id="mainPage" style="display:none">
     <!-- insert nav bar content start -->
-    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" id="backToLanding">
           <h1 id="navTitle"> BandiFi </h1>
@@ -102,7 +102,7 @@
         <div class="column">
           <!-- artist card start-->
 
-          <div class="card">
+          <div class="card artist-card">
             <div class="card-content" id="artist-card">
               <article class="media">
                 <figure class="media-left" id="media">
@@ -144,7 +144,7 @@
 
           <!-- related artists start -->
           <div class="box recommended-artists">
-            <h2 class="subtitle" style="text-align:center">Recommended Artists</h2>
+            <h2 class="title" style="text-align:center">Recommended Artists</h2>
             <div class="buttons is-centered" id="relatedArtists"></div>
           </div>
           <!-- related artists end -->
@@ -156,7 +156,7 @@
         <div class="column">
     
           <section>
-            <div class="card">
+            <div class="card itunes-card">
               <!-- <header class="card-header" >
                 <p class="card-header-title title" id="artistName"></p>
               </header> -->
@@ -174,19 +174,18 @@
                 </div>
                 <div class="content">
                   <audio controls id="sampleAudio" style="width:100%"></audio>
-                    <div class="table-container">
-                      <table class="table is-hoverable">
+                    <!-- <div class="table-container"> -->
+                      <table class="table is-fullwidth is-hoverable song-table">
                         <thead>
                           <th></th>
                           <th>Song Name</th>
                           <th>Album</th>
-                          <th></th>
                         </thead>
                         <tbody  id="songContainer">
                           <!-- songs rows are inserted here -->
                         </tbody>
                       </table>
-                    </div>
+                    <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -225,7 +224,6 @@
     </div>
     <!-- footer starts here -->
     <footer class="footer">
-      <footer class="footer">
         <div class="content has-text-centered">
           <p>
             <strong>BandiFi</strong> created by Group Names...</a>. Page styling via  
@@ -234,7 +232,6 @@
             <a href="https://www.artists.bandsintown.com/support/api-installation">BandsInTown</a>.
           </p>
         </div>
-      </footer>
     </footer>
     <!-- footer ends here -->
     </div>
