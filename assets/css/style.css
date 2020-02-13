@@ -179,7 +179,16 @@ body{
   width: 50%;
   border-radius: 2px solid;
   padding: 10px;
-  background-color: rgba(255, 255, 255, .5);
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.8) 30%, rgba(255,255,255,.3) 80%)!important;
+}
+
+.wrapper input{
+  opacity:80%;
+}
+
+.wrapper img{
+  opacity:80%;
 }
 
 .landing-form {
