@@ -8,153 +8,232 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./itunes.js"></script>
-    <script src="./bandsintown.js"></script>
-    <script src="./tasteDive.js"></script>
+    <script src="./script.js"></script>
+    <script src="assets/moment.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
-    <!-- insert nav bar content start -->
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-        </a>
+    <!-- landing page view -->
+    <div id="landingPage">
+    <section class="wrapper">
+      <div class="panel">
+        <h1 class="main-page-title">
+          Discover Artists and Events
+        </h1>
+        <p class="landing-subtitle">
+          Search your favorite artists and see if they have any upcoming events
+        </p>
+        
+        <form class="landing-form" id="landingPageForm">
+          <div class="field has-addons is-large">
+          <div class="control is-expanded">
+            <input id="landingSearchField" class="input is-fullwidth is-large" type="text" placeholder="Search">
+          </div>
+          <div class="control">
+            <button id="landingSearchButton" type="submit" class="button is-large">
+              <div class="icon">
+                <img src="https://img.icons8.com/metro/26/000000/search.png">
+              </div>
+              
+            </button>
+          </div>
+        </div>
+      </form>
+
+      </div>
+    </section>
     
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+
+    <footer>
+      <div class="footer-container">
+        <p class="footer-info">
+          <b>Created by:</b> Katie Bobbe, Tyler Buck, Rachel Humble, & Omar Ibrahim
+          <br>
+        <b>With the use of:</b> moment.js, jQuery, Bands In Town API, tasteDive API & iTunes API
+        </p>
+      </div>
+    </footer>
+    </div>
+    <!-- landing page view end -->
+
+    <!-- search results page start -->
+    <div id="mainPage" style="display:none">
+    <!-- insert nav bar content start -->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="backToLanding">
+          <h1 id="navTitle"> BandiFi </h1>
         </a>
       </div>
     
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
-    
-          <a class="navbar-item">
-            Documentation
-          </a>
-    
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-    
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
+
           </div>
-        </div>
+          </div>
     
         <div class="navbar-end">
           <div class="navbar-item">
-            <input class="input" type="text" placeholder="Search">
+            <form id="search-form">
+              <div class="field has-addons">
+              <div class="control">
+                <input class="input" id="searchField" type="text" placeholder="Search">
+              </div>
+              <div class="control">
+                <button class="button" id="search-button" type="submit">
+                  <div class="icon is-small">
+                    <img src="https://img.icons8.com/metro/26/000000/search.png">
+                  </div>
+                </button>
+              </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
     </nav>
     <!-- insert nav bar content end -->
+    <!-- container div wraps main content, excluding nav and footer -->
+    <div class="container" style="margin-top:2em;">
+      <!-- columns div wraps both columns -->
+      <div class="columns">
+        <!-- left column start -->
+        <div class="column">
+          <!-- artist card start-->
 
-    <div class="columns">
-      <!-- left column start -->
-      <div class="column">
-        <!-- artist card start-->
-        <div class="card">
-          <div class="media-content">
-            <p class="title is-4" id="bandName"></p>
-            <div class="card-image">
-              <figure class="image is-2by2">
-                <img class="is-rounded" id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">
-              </figure>
-            </div>
-            <div class="card-content">
-          
-              <div class="content">
-                <div id="bandAbout">
-                  
-                </div>
-              </div>              
+          <div class="card artist-card">
+            <div class="card-content" id="artist-card">
+              <article class="media">
+                <figure class="media-left" id="media">
+                  <div class="card-image">              
+                    <p class="image">
+                      <img id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">  
+                    </p> 
+                  </div>                     
+                </figure>
+                  <h1 class="title is-4" id="bandName"></h1>           
+              </article>
             </div>
           </div>
-        </div>
-        <!-- artist card end -->
+        
+          <!-- artist card end -->
 
-        <!-- upcoming event card start -->
-
-        <!-- upcoming event card end -->
-
-        <!-- related artists start -->
-        <div class="box">
-          <p id="relatedArtists"></p>
-        </div>
-        <!-- related artists end -->
-
-      </div>
-      <!-- left column end -->
-
-      <!-- right column (itunes) start -->
-      <div class="column is-one-third">
-  
-        <section>
-          <div class="card">
-            <header class="card-header" >
-              <p class="card-header-title title" id="artistName"></p>
-            </header>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-100x100">
-                    <img id="songImg" alt="Album Art">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4" id="songName"></p>
-                  <p class="subtitle is-6" id="albumName"></p>
+          <!-- upcoming event card start -->
+          <container id="event-card">
+            <div class="card eventCard">
+              <header class="card-header">
+                <p class="card-header-title" id="eventCity"></p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <time id="eventDate"></time>
+                  <div id="eventVenue"></div>
+                  <div id="lineup"></div>
+                  <div id="saleDate"></div>
                 </div>
               </div>
-              <div class="content">
-                <audio controls id="sampleAudio"></audio>
-                  <div class="table-container">
-                    <table class="table is-hoverable">
-                      <thead>
-                        <th></th>
-                        <th>Song Name</th>
-                        <th>Album</th>
-                        <th></th>
-                      </thead>
-                      <tbody  id="songContainer">
-                        <!-- songs rows are inserted here -->
-                      </tbody>
-                    </table>
+              <footer class="card-footer">
+                <a id="facebook" class="card-footer-item"><img src="https://www.facebook.com/images/fb_icon_325x325.png" height="20px" width="20px"></a>
+                <a id="buyTickets" class="card-footer-item">Buy Tickets Here</a>
+                <a id="addToEvents" class="card-footer-item btn">Add to Your Events</a>
+              </footer>
+            </div>
+          </container>
+          <!-- upcoming event card end -->
+
+          <!-- related artists start -->
+          <div class="box recommended-artists">
+            <h2 class="title" style="text-align:center">Recommended Artists</h2>
+            <div class="buttons is-centered" id="relatedArtists"></div>
+          </div>
+          <!-- related artists end -->
+
+        </div>
+        <!-- left column end -->
+
+        <!-- right column (itunes) start -->
+        <div class="column">
+    
+          <section>
+            <div class="card itunes-card">
+              <!-- <header class="card-header" >
+                <p class="card-header-title title" id="artistName"></p>
+              </header> -->
+              <div class="card-content">
+                <div class="media level">
+                  <div class="media-left">
+                    <figure class="image is-100x100">
+                      <img id="songImg" alt="Album Art">
+                    </figure>
                   </div>
+                  <div class="media-content">
+                    <p class="title is-4" id="songName"></p>
+                    <p class="subtitle is-6" id="albumName"></p>
+                  </div>
+                </div>
+                <div class="content">
+                  <audio controls id="sampleAudio" style="width:100%"></audio>
+                    <!-- <div class="table-container"> -->
+                      <table class="table is-fullwidth is-hoverable song-table">
+                        <thead>
+                          <th></th>
+                          <th>Song Name</th>
+                          <th>Album</th>
+                        </thead>
+                        <tbody  id="songContainer">
+                          <!-- songs rows are inserted here -->
+                        </tbody>
+                      </table>
+                    <!-- </div> -->
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-      <!-- right column (itunes) end -->
+          </section>
+          <!-- itunes end -->
+          <!-- favorite events start -->
+          <section id="favoriteEventsSection" style="display:none">
+            <div class="box">
+              <div class="content">
+                <div class="table-container">
+                  <table class="table is-striped">
+                    <p class="subtitle is-12" style="text-align:center"><strong>Your Saved Events</strong></p>
+                    <thead>
+                      <th>Date</th>
+                      <th>Artist</th>
+                      <th>Venue</th>
+                      <tbody id="favoriteEventsContainer">
+                        <!-- event rows are inserted here -->
+                      </tbody>
+                    </thead>
+                    <tbody id="eventTable">
+                      <!-- songs rows are inserted here -->
+                    </tbody>
+                  </table>
+                  <div style="text-align:center">
+                    <button class="button is-danger is-small is-outlined" id="clearEvents">Clear Events</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- right column end-->
 
+      </div>
     </div>
     <!-- footer starts here -->
     <footer class="footer">
-      
+        <div class="content has-text-centered">
+          <p>
+            <strong>BandiFi</strong> created by Group Names...</a>. Page styling via  
+            <a href="https://bulma.io/"> <img src="https://bulma.io/images/bulma-logo.png" width="60" height="100"></a>. Music data provided by
+            <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/">iTunes.</a> Concert data provided by
+            <a href="https://www.artists.bandsintown.com/support/api-installation">BandsInTown</a>.
+          </p>
+        </div>
     </footer>
     <!-- footer ends here -->
+    </div>
   </body>
 </html>

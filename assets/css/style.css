@@ -1,0 +1,197 @@
+.active-song{
+  font-weight: bold;
+  cursor: default;
+}
+
+#songContainer:hover{
+  cursor: pointer;
+}
+
+html * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#navTitle {
+    font-size: 32px;
+}
+
+.navbar {
+    background-color: black !important;
+}
+
+.itunes-card {
+  /* background-color: rgba(255, 255, 255, .5)!important; */
+
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,1) 70%)!important;
+
+}
+
+.artist-card {
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,1) 100%)!important;
+
+}
+
+.eventCard {
+  background-color: white !important;
+}
+
+#artist-card {
+  padding: 0!important;
+}
+
+#bandName {
+    font-size: 45px;
+    text-align: center;
+    margin-top: 15%;
+    margin-left: 10px;
+    /* white-space: nowrap; */
+}
+
+#bandImg {
+    width: 50%;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 1025px) {
+    #searchField {
+        width: 200px;
+    }
+
+    #search-button {
+        width: 50px;
+    }
+
+    #bandName {
+        font-size: 20px; 
+        margin-top: 20px;  
+    }
+
+    .media-left {
+      width: 70%;
+      padding: 5px;
+    }
+
+    #bandImg {
+      height: 280px!important;
+    }
+
+    #artist-card {
+      height: 300px;
+    }
+
+    /* #media, #bandName {
+      display: block;
+      width: 100%;
+      float: none;
+    } */
+  
+}    
+/* recommended-artists box */
+.recommended-artists {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0!important;
+  /* background-color: rgba(255,255,255,.9)!important; */
+  /* border: 2px solid white; */
+}
+
+.hidden {
+  display: none;
+}
+
+#favoriteEventsSection {
+  margin: 2em 0 2em 0;
+}
+
+audio{
+  opacity:70%;
+}
+
+.table-container{
+  background-color: rgba(255,255,255, .5);
+}
+
+.song-table{
+  margin-top:2em;
+  background-color: rgba(255,255,255, 0)!important;
+  
+}
+
+.media{
+  padding:2em;
+}
+
+
+#favoriteEventsSection{
+  border-radius: 0!important;
+  background-color: rgba(255,255,255,.8)!important;
+  border: 2px solid white;
+}
+/* landing page css */
+
+/* *{
+  box-sizing: border-box;
+} */
+
+.main-page-title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold; 
+}
+
+.landing-subtitle {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body{
+  padding: 0;
+  background-image: url("../imgs/backgroundHQ.jpg");
+  background-size: cover;
+}
+
+.footer-container{
+  position: fixed;
+  border-top: 1px solid grey;
+  text-align: center;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  padding-bottom: 20px 0; 
+  
+}
+
+.footer-container p {
+  font-size: 12px;
+}
+
+.wrapper {
+  height: calc(100vh - 60px);
+  padding-top: calc(50vh - 190px);
+}
+
+.wrapper .panel {
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 2px solid;
+  padding: 10px;
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.8) 30%, rgba(255,255,255,.3) 80%)!important;
+}
+
+.wrapper input{
+  opacity:80%;
+}
+
+.wrapper img{
+  opacity:80%;
+}
+
+.landing-form {
+  margin: 2em 1em 2em 1em;
+  
+}
