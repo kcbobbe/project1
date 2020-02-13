@@ -15,12 +15,22 @@ html * {
     font-size: 32px;
 }
 
-.navbar.is-info {
+.navbar {
     background-color: black !important;
 }
 
-.card {
-  background-color: rgba(255, 255, 255, .5)!important;
+.itunes-card {
+  /* background-color: rgba(255, 255, 255, .5)!important; */
+
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,1) 70%)!important;
+
+}
+
+.artist-card {
+  background: rgb(255,255,255)!important;
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,1) 100%)!important;
+
 }
 
 .eventCard {
@@ -82,6 +92,9 @@ html * {
 .recommended-artists {
   margin-top: 2em;
   margin-bottom: 2em;
+  border-radius: 0!important;
+  /* background-color: rgba(255,255,255,.9)!important; */
+  /* border: 2px solid white; */
 }
 
 .hidden {
@@ -89,10 +102,33 @@ html * {
 }
 
 #favoriteEventsSection {
-  margin-top: 2em;
+  margin: 2em 0 2em 0;
+}
+
+audio{
+  opacity:70%;
+}
+
+.table-container{
+  background-color: rgba(255,255,255, .5);
+}
+
+.song-table{
+  margin-top:2em;
+  background-color: rgba(255,255,255, 0)!important;
+  
+}
+
+.media{
+  padding:2em;
 }
 
 
+#favoriteEventsSection{
+  border-radius: 0!important;
+  background-color: rgba(255,255,255,.8)!important;
+  border: 2px solid white;
+}
 /* landing page css */
 
 /* *{
@@ -143,7 +179,7 @@ body{
   width: 50%;
   border-radius: 2px solid;
   padding: 10px;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, .5);
 }
 
 .landing-form {
