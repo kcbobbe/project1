@@ -103,10 +103,7 @@ $(document).ready(function() {
     })
   
       // bands in town api 
-        var bandsInTownApiKey = "codingbootcamp";
-        
-        // var artistName = "Twin Peaks";
-        
+        var bandsInTownApiKey = "codingbootcamp";  
         var hasEvent = "";
 
         function getArtistData(artistName) {
@@ -148,15 +145,29 @@ $(document).ready(function() {
               console.log("YES EVENT");
               $("#bandName").text(response[0].artist.name);
               $("#bandImg").attr("src", response[0].artist.image_url);
-              var eventDate = moment.parseZone(response[0].datetime);
-              $("#eventDate").text("Concert date: " + eventDate._d);
+              var eventDate = moment(response[0].datetime).format("MM/DD/YYYY");
+              $("#eventDate").text(eventDate);
               $("#buyTickets").attr("href", response[0].offers[0].url)
               $("#eventCity").text("Next event in: " + response[0].venue.city);
-              $("#eventVenue").text("Venue: " + response[0].venue.name);
+              $("#eventVenue").text("@ " + response[0].venue.name);
               $("#facebook").attr("href", response[0].artist.facebook_page_url);
-              var saleDate = moment.parseZone(response[0].on_sale_datetime);
-              $("#saleDate").text("Tickets go on sale " + saleDate._d);
-              $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
+
+              var hasSaleDate = response[0].on_sale_datetime;
+              if(hasSaleDate) {
+                var saleDate = moment(response[0].on_sale_datetime).format("MM/DD/YY");
+                console.log("Sale date?", hasSaleDate);
+                $("#saleDate").text("Tickets go on sale " + saleDate);
+              } else {
+                $("#saleDate").text("");
+              }
+
+              var hasLineup = response[0].lineup[1];
+              if(hasLineup) {
+                $("#lineup").text("Supporting artist: " + response[0].lineup[1]);
+              } else {
+                $("#lineup").text("Supporting artist: N/A");
+              }
+              
               $("#addToEvents").css("display","");
                           //
               eventInfo.artist = response[0].artist.name;
@@ -168,14 +179,6 @@ $(document).ready(function() {
         
           })
         }
-
-      // console.log("event y/n?", eventData);
-      // if(eventData === "undefined") {
-      //   getArtistData();
-      //   console.log("YES");
-      // } else {
-      // };
-        
     
     //search on landing page
 

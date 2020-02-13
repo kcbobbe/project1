@@ -101,41 +101,35 @@
         <!-- left column start -->
         <div class="column">
           <!-- artist card start-->
+
           <div class="card">
-            <div class="media-content">
-              
-              <div class="card-image">
-                
-                <figure class="image is-2by2" id="artistPic">  
-                  <h1 class="title is-4" id="bandName"> </h1>
-                  <img id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">                        
+            <div class="card-content" id="artist-card">
+              <article class="media">
+                <figure class="media-left" id="media">
+                  <div class="card-image">              
+                    <p class="image">
+                      <img id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">  
+                    </p> 
+                  </div>                     
                 </figure>
-                
-              </div>
-              <div class="card-content">
-            
-                <div class="content">
-                  <div id="bandAbout">
-                    
-                  </div>
-                </div>              
-              </div>
+                  <h1 class="title is-4" id="bandName"></h1>           
+              </article>
             </div>
           </div>
+        
           <!-- artist card end -->
 
           <!-- upcoming event card start -->
           <container id="event-card">
-            <div class="card">
+            <div class="card eventCard">
               <header class="card-header">
                 <p class="card-header-title" id="eventCity"></p>
               </header>
               <div class="card-content">
                 <div class="content">
+                  <time id="eventDate"></time>
                   <div id="eventVenue"></div>
                   <div id="lineup"></div>
-                  <time id="eventDate"></time>
-                  <br>
                   <div id="saleDate"></div>
                 </div>
               </div>
