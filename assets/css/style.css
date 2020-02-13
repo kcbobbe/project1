@@ -19,19 +19,24 @@ html * {
     background-color: black !important;
 }
 
-/* .navbar.button {
-    margin-left: 5px;
-} */
+.card {
+  background-color: rgba(255, 255, 255, .5)!important;
+}
+
+.eventCard {
+  background-color: white !important;
+}
+
+#artist-card {
+  padding: 0!important;
+}
 
 #bandName {
-    font-size: 50px;
-    line-height: 100px;
+    font-size: 45px;
     text-align: center;
-    height: 300px;
-    width: 300px;
-    float: right;
-    margin-right: 20%;
-    margin-top: 60px;
+    margin-top: 15%;
+    margin-left: 10px;
+    /* white-space: nowrap; */
 }
 
 #bandImg {
@@ -49,10 +54,29 @@ html * {
     }
 
     #bandName {
-        font-size: 40px;
-        line-height: 40px;
-        height: 50px;    
+        font-size: 20px; 
+        margin-top: 20px;  
     }
+
+    .media-left {
+      width: 70%;
+      padding: 5px;
+    }
+
+    #bandImg {
+      height: 280px!important;
+    }
+
+    #artist-card {
+      height: 300px;
+    }
+
+    /* #media, #bandName {
+      display: block;
+      width: 100%;
+      float: none;
+    } */
+  
 }    
 /* recommended-artists box */
 .recommended-artists {
