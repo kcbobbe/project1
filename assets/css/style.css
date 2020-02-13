@@ -19,9 +19,9 @@ html * {
     background-color: black !important;
 }
 
-.button {
+/* .navbar.button {
     margin-left: 5px;
-}
+} */
 
 #bandName {
     font-size: 50px;
@@ -57,6 +57,7 @@ html * {
 /* recommended-artists box */
 .recommended-artists {
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .hidden {
@@ -65,4 +66,63 @@ html * {
 
 #favoriteEventsSection {
   margin-top: 2em;
+}
+
+
+/* landing page css */
+
+/* *{
+  box-sizing: border-box;
+} */
+
+.main-page-title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold; 
+}
+
+.landing-subtitle {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body{
+  padding: 0;
+  background-image: url("../imgs/backgroundHQ.jpg");
+  background-size: cover;
+}
+
+.footer-container{
+  position: fixed;
+  border-top: 1px solid grey;
+  text-align: center;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  padding-bottom: 20px 0; 
+  
+}
+
+.footer-container p {
+  font-size: 12px;
+}
+
+.wrapper {
+  height: calc(100vh - 60px);
+  padding-top: calc(50vh - 190px);
+}
+
+.wrapper .panel {
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 2px solid;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.landing-form {
+  margin: 2em 1em 2em 1em;
+  
 }

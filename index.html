@@ -15,50 +15,63 @@
 
   <body>
 
+    <!-- landing page view -->
+    <div id="landingPage">
+    <section class="wrapper">
+      <div class="panel">
+        <h1 class="main-page-title">
+          Discover Artists and Events
+        </h1>
+        <p class="landing-subtitle">
+          Search your favorite artists and see if they have any upcoming events
+        </p>
+        
+        <form class="landing-form" id="landingPageForm">
+          <div class="field has-addons is-large">
+          <div class="control is-expanded">
+            <input id="landingSearchField" class="input is-fullwidth is-large" type="text" placeholder="Search">
+          </div>
+          <div class="control">
+            <button id="landingSearchButton" type="submit" class="button is-large">
+              <div class="icon">
+                <img src="https://img.icons8.com/metro/26/000000/search.png">
+              </div>
+              
+            </button>
+          </div>
+        </div>
+      </form>
+
+      </div>
+    </section>
+    
+
+    <footer>
+      <div class="footer-container">
+        <p class="footer-info">
+          <b>Created by:</b> Katie Bobbe, Tyler Buck, Rachel Humble, & Omar Ibrahim
+          <br>
+        <b>With the use of:</b> moment.js, jQuery, Bands In Town API, tasteDive API & iTunes API
+        </p>
+      </div>
+    </footer>
+    </div>
+    <!-- landing page view end -->
+
+    <!-- search results page start -->
+    <div id="mainPage" style="display:none">
     <!-- insert nav bar content start -->
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="landingPage.html">
-          <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
+        <a class="navbar-item" id="backToLanding">
           <h1 id="navTitle"> BandiFi </h1>
-        </a>
-    
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
         </a>
       </div>
     
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-start">
-          <!-- <a class="navbar-item">
-            Home
-          </a>
-    
-          <a class="navbar-item">
-            Documentation
-          </a>
-    
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-    
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue -->
-            </div>
+
+          </div>
           </div>
     
         <div class="navbar-end">
@@ -230,5 +243,6 @@
       </footer>
     </footer>
     <!-- footer ends here -->
+    </div>
   </body>
 </html>
