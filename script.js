@@ -268,5 +268,10 @@ $(document).ready(function() {
     
       return 0;
     }
+//page animations
+    $(".panel").slideDown(1500);
+    $(".columns").fadeIn(7000);
+    
+  
 
   })
