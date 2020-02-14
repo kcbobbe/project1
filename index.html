@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="assets/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   </head>
 
@@ -15,7 +18,7 @@
     <!-- landing page view -->
     <div id="landingPage">
     <section class="wrapper">
-      <div class="panel" style="display: none;">
+      <div class="panel">
         <h1 class="main-page-title">
           Discover Artists and Events
         </h1>
@@ -58,7 +61,7 @@
     <!-- search results page start -->
     <div id="mainPage" style="display:none">
     <!-- insert nav bar content start -->
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" id="backToLanding">
           <h1 id="navTitle"> BandiFi </h1>
@@ -99,25 +102,18 @@
         <div class="column">
           <!-- artist card start-->
 
-    <div class="columns">
-      <!-- left column start -->
-      <div class="column">
-        <!-- artist card start-->
-        <div class="card">
-          <div class="media-content">
-            <p class="title is-4" id="bandName"></p>
-            <div class="card-image">
-              <figure class="image is-2by2">
-                <img class="is-rounded" id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">
-              </figure>
-            </div>
-            <div class="card-content">
-          
-              <div class="content">
-                <div id="bandAbout">
-                  
-                </div>
-              </div>              
+          <div class="card artist-card">
+            <div class="card-content" id="artist-card">
+              <article class="media">
+                <figure class="media-left" id="media">
+                  <div class="card-image">              
+                    <p class="image">
+                      <img id="bandImg" alt="Placeholder image" style="height: 300px; width: 300px;">  
+                    </p> 
+                  </div>                     
+                </figure>
+                  <h1 class="title is-4" id="bandName"></h1>           
+              </article>
             </div>
           </div>
         
@@ -238,11 +234,6 @@
         </div>
     </footer>
     <!-- footer ends here -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./script.js"></script>
-    <script src="assets/moment.js"></script>
-
     </div>
   </body>
 </html>
