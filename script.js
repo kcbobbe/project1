@@ -261,6 +261,7 @@ $(document).ready(function() {
       $("#landingPage").css("display","");
       $("#mainPage").css("display","none");
     })
+    
 // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
     function compare(a, b) {
       if (a[0] > b[0]) return 1;
@@ -268,5 +269,11 @@ $(document).ready(function() {
     
       return 0;
     }
+
+//page animations
+    $(".panel").slideDown(1500);
+    // $(".columns").fadeIn();
+    
+  
 
   })

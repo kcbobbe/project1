@@ -3,6 +3,7 @@ https://kcbobbe.github.io/project1/
 
 ## Description
 BandiFi is tool for searching for live events for you favorite band and to offer and suggest new artists the user might be interested in. 
+
 ## Installation
 
 1. Clone the repository to your computer
@@ -27,6 +28,7 @@ BandiFi is tool for searching for live events for you favorite band and to offer
 - iTunes API - for the music sample and top 5 tracks
 - Taste Dive API - for the related artists 
 - Bands in Town API - for the artist's upcoming events
+- Favicons from logaster.com
 
 ## License
 MIT License
