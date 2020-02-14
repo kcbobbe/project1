@@ -213,7 +213,7 @@ $(document).ready(function() {
       // if I just push eventInfo to favoriteEvents, each time eventInfo changes, all of the values pointing to eventInfo change to most recent assignment
       favoriteEvents.push(Object.values(eventInfo));
       favoriteEvents.sort(compare);
-      createFavoriteEvents();
+      // createFavoriteEvents();
       localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
       console.log('click')
       console.log(JSON.parse(localStorage.getItem("favoriteEvents")), "from local storage")
@@ -252,6 +252,7 @@ $(document).ready(function() {
     function clearEvents(){
       $("#favoriteEventsSection").css("display", "none");
       $("#favoriteEventsContainer").text("");
+      favoriteEvents = [];
       localStorage.clear();
     }
 
@@ -260,7 +261,7 @@ $(document).ready(function() {
       $("#landingPage").css("display","");
       $("#mainPage").css("display","none");
     })
-
+// https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
     function compare(a, b) {
       if (a[0] > b[0]) return 1;
       if (b[0] > a[0]) return -1;
