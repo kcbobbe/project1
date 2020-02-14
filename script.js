@@ -268,7 +268,4 @@ $(document).ready(function() {
       return 0;
     }
 
-    $(".panel").slideDown(1500)
-
-
   })
