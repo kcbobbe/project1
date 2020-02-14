@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project 1</title>
+    <title>BandiFi</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="shortcut icon" type="image/png" href="assets/imgs/bandifyFavicon3.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,7 +20,7 @@
     <!-- landing page view -->
     <div id="landingPage">
     <section class="wrapper">
-      <div class="panel">
+      <div class="panel" style="display: none;">
         <h1 class="main-page-title">
           BandiFi
         </h1>
@@ -45,17 +46,6 @@
 
       </div>
     </section>
-    
-
-    <!-- <footer>
-      <div class="footer-container">
-        <p class="footer-info">
-          <b>Created by:</b> Katie Bobbe, Tyler Buck, Rachel Humble, & Omar Ibrahim
-          <br>
-        <b>With the use of:</b> moment.js, jQuery, Bands In Town API, tasteDive API & iTunes API
-        </p>
-      </div>
-    </footer> -->
     </div>
     <!-- landing page view end -->
 
@@ -80,7 +70,7 @@
             <form id="search-form">
               <div class="field has-addons">
               <div class="control">
-                <input class="input" id="searchField" type="text" placeholder="Search">
+                <input class="input" id="searchField" type="text" placeholder="Search Artists">
               </div>
               <div class="control">
                 <button class="button" id="search-button" type="submit">
@@ -119,21 +109,15 @@
           </div> -->
 
           <div class="card artist-card" style="padding:2em">
-            <!-- <div class="card-content" id="artist-card"> -->
               <div class="columns is-tablet is-vcentered">
                 <div class="column" style="text-align:center">
-                  <!-- <div class="card-image level-item">               -->
-                    <!-- <p class="image"> -->
                     <img id="bandImg" alt="Placeholder image">   
-                    <!-- </p>  -->
-                  <!-- </div>                      -->
                   </div>
                 <div class="column">
                   <h1 class="title is-level" id="bandName"></h1>           
                 </div>
             </div>
-              <!-- </div> -->
-            </div>
+          </div>
 
         
           <!-- artist card end -->
@@ -153,7 +137,7 @@
                 </div>
               </div>
               <footer class="card-footer">
-                <a id="facebook" class="card-footer-item"><img src="https://www.facebook.com/images/fb_icon_325x325.png" height="20px" width="20px"></a>
+                <a id="facebook" class="card-footer-item"><img src="assets/imgs/fb_icon_325x325.png" height="20px" width="20px"></a>
                 <a id="buyTickets" class="card-footer-item">Buy Tickets Here</a>
                 <a id="addToEvents" class="card-footer-item btn">Add to Your Events</a>
               </footer>
@@ -176,12 +160,9 @@
     
           <section>
             <div class="card itunes-card">
-              <!-- <header class="card-header" >
-                <p class="card-header-title title" id="artistName"></p>
-              </header> -->
               <div class="card-content">
                 <div class="media level">
-                  <div class="media-left">
+                  <div class="media-left" style="max-width:100px">
                     <figure class="image is-100x100">
                       <img id="songImg" alt="Album Art" style="width:100px">
                     </figure>
@@ -193,7 +174,6 @@
                 </div>
                 <div class="content">
                   <audio controls id="sampleAudio" style="width:100%"></audio>
-                    <!-- <div class="table-container"> -->
                       <table class="table is-fullwidth is-hoverable song-table">
                         <thead>
                           <th></th>
@@ -245,10 +225,16 @@
     <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            <strong>BandiFi</strong> created by Group Names...</a>. Page styling via  
-            <a href="https://bulma.io/"> <img src="https://bulma.io/images/bulma-logo.png" width="60" height="100"></a>. Music data provided by
-            <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/">iTunes.</a> Concert data provided by
-            <a href="https://www.artists.bandsintown.com/support/api-installation">BandsInTown</a>.
+            <strong>BandiFi</strong> created by Katie Bobbe, Tyler Buck, Rachel Humble, & Omar Ibrahim
+          </p>
+          <p>
+            Styled with <a href="https://bulma.io/"> <img src="https://bulma.io/images/bulma-logo.png" width="60" height="100"></a>  |  
+            Music data provided by
+            <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/">iTunes Search API</a>  |  
+            Concert data provided by
+            <a href="https://www.artists.bandsintown.com/support/api-installation">Bandsintown API</a>  |  
+            Related artist data provided by 
+            <a href="https://tastedive.com/read/api">TasteDive API</a>
           </p>
         </div>
     </footer>

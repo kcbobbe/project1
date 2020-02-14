@@ -1,23 +1,14 @@
 $(document).ready(function() {
 
-  // object is saved with the event information for the current search
-  var eventInfo = {
-    date: "",
-    artist: "",
-    location: ""
-  }
-  // array of objects to be stored and retrieved in local storage (saved events)
-  // local storage setup
+  // local storage setup -- for saved events panel
   if(!localStorage.getItem("favoriteEvents")){
     var favoriteEvents = [];
   } else{
     var favoriteEvents = JSON.parse(localStorage.getItem("favoriteEvents"));
     createFavoriteEvents()
-    // localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
   }
 
   // related artist API -- Taste Dive
-
   var tasteDiveApiKey = "355215-KatieBob-H8EY3UTU"
   
   
@@ -28,7 +19,6 @@ $(document).ready(function() {
       url: "https://tastedive.com/api/similar?q=" + artistName + "&k=" + tasteDiveApiKey + "&type=music" + "&limit=5",
       method:"GET"
     }).then(function(response){
-      // console.log(response)
       for (var i=0; i < response.Similar.Results.length; i++) {
         var relatedArtist = $("<button>");
         relatedArtist.attr("class","button");
@@ -44,7 +34,6 @@ $(document).ready(function() {
     if (e.target.matches('button')){
       e.preventDefault();
       var artist = (e.target.id);
-      console.log(artist);
       getItunes(artist);
       getEventData(artist);
       getRelated(artist);
@@ -52,8 +41,7 @@ $(document).ready(function() {
   })
   
 // iTunes API
-  
-    // var artistName = "Sons of Apollo";
+
     var parsedResponse = "";
     
     function getItunes(artistName){
@@ -64,19 +52,15 @@ $(document).ready(function() {
       }).then(function(response){
         parsedResponse = JSON.parse(response);
         $("#artistName").text("Listen to " + parsedResponse.results[0].artistName)
-        // console.log(parsedResponse.results[0].previewUrl)
-        // console.log(parsedResponse[0].previewUrl);
         for (var i = 0; i < parsedResponse.results.length; i++){
           var newSongContainer = $("<tr>")
           newSongContainer.attr("data-id", i)
           var newSongNumber = $("<th>");
           newSongNumber.text(i+1);
-          // newSongNumber.attr("id", i)
           var newSongName = $("<td>");
           newSongName.text(parsedResponse.results[i].trackName);
           var newAlbumName = $("<td>");
           newAlbumName.text(parsedResponse.results[i].collectionName);
-          // console.log(newSongName)
           newSongContainer.append(newSongNumber,newSongName,newAlbumName);
           $("#songContainer").append(newSongContainer)
         }
@@ -84,7 +68,7 @@ $(document).ready(function() {
     
       })
     }
-  
+  // creates top section of the itunes panel with audio, song name, album name, and album art
     function getNowPlaying(index) {
         $("#sampleAudio").attr("src", parsedResponse.results[index].previewUrl);
         $("#sampleAudio").attr("type", "audio/m4a")
@@ -98,11 +82,10 @@ $(document).ready(function() {
         $("#songContainer").children().removeClass("active-song")
         var parentElement = ($(e.target).parent());
         parentElement.attr("class", "active-song");
-       // console.log(parentElement.attr("data-id"))
         getNowPlaying(parentElement.attr("data-id"))
     })
   
-      // bands in town api 
+      // bands in town api
         var bandsInTownApiKey = "codingbootcamp";  
         var hasEvent = "";
 
@@ -111,27 +94,18 @@ $(document).ready(function() {
             url: "https://rest.bandsintown.com/artists/" + artistName + "/?app_id=" + bandsInTownApiKey,
             method: "GET"
           }).then(function(response){
-            console.log("bandsintown artist info: ", response.name);
             $("#bandName").text(response.name);
             $("#bandImg").attr("src", response.image_url);
           });
         }
-
-        console.log("event available?" + hasEvent);
-        
-        
+                
         function getEventData(artistName){
           $.ajax({
             url: "https://rest.bandsintown.com/artists/" + artistName + "/events/?app_id=" + bandsInTownApiKey,
             method:"GET"
           }).then(function(response){
-            // console.log("bandsintown events response", response[0]);
             hasEvent = response[0];
-            console.log("event avail?", hasEvent);
-          
-            
             if(!hasEvent) {
-              console.log("no event");
               getArtistData(artistName);
               $("#eventVenue").text("No upcoming events");
               $("#eventCity").text("Stay tuned for future events!");
@@ -142,7 +116,6 @@ $(document).ready(function() {
               $("#facebook").attr("href", "https://facebook.com");
               $("#addToEvents").css("display","none");
             } else {
-              console.log("YES EVENT");
               $("#bandName").text(response[0].artist.name);
               $("#bandImg").attr("src", response[0].artist.image_url);
               var eventDate = moment(response[0].datetime).format("MM/DD/YYYY");
@@ -155,7 +128,6 @@ $(document).ready(function() {
               var hasSaleDate = response[0].on_sale_datetime;
               if(hasSaleDate) {
                 var saleDate = moment(response[0].on_sale_datetime).format("MM/DD/YY");
-                console.log("Sale date?", hasSaleDate);
                 $("#saleDate").text("Tickets go on sale " + saleDate);
               } else {
                 $("#saleDate").text("");
@@ -169,17 +141,14 @@ $(document).ready(function() {
               }
               
               $("#addToEvents").css("display","");
-                          //
               eventInfo.artist = response[0].artist.name;
               eventInfo.date = response[0].datetime;
               eventInfo.location = response[0].venue.name
-              console.log(eventInfo, "event info")
-            };
-            // console.log(response);
-        
+            };        
           })
         }
     
+    // searches
     //search on landing page
 
     $("#landingPageForm").on('submit', function(e){
@@ -204,30 +173,40 @@ $(document).ready(function() {
     })
 
 
-   
+    // add event to favorites feature
 
-    // add event to favorites
+    // https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+    // use this function to order the event favorites array in order chronologically
+      // object is saved with the event information for the current search
+    var eventInfo = {
+      date: "",
+      artist: "",
+      location: ""
+    }
+
+    function compare(a, b) {
+      if (a[0] > b[0]) return 1;
+      if (b[0] > a[0]) return -1;
+      return 0;
+    }
+
     $("#addToEvents").on('click', function(e){
       e.preventDefault();
       // current work around for eventInfo pointing to a reference, not value
       // if I just push eventInfo to favoriteEvents, each time eventInfo changes, all of the values pointing to eventInfo change to most recent assignment
       favoriteEvents.push(Object.values(eventInfo));
       favoriteEvents.sort(compare);
-      // createFavoriteEvents();
       localStorage.setItem("favoriteEvents", JSON.stringify(favoriteEvents))
-      console.log('click')
-      console.log(JSON.parse(localStorage.getItem("favoriteEvents")), "from local storage")
-      console.log(favoriteEvents, "these are my favorite events")
       createFavoriteEvents()
 
     })
-
+// creating the saved events panel. Is hidden unless there is an item in the array
     function createFavoriteEvents() {
       $("#favoriteEventsSection").css("display", "");
       $("#favoriteEventsContainer").text("");
       for (var i = 0; i < favoriteEvents.length; i++){
+        //only shows up if the event is still in the future
         if ((moment(favoriteEvents[i][0])).format("YYYYMMDD") > (moment().format("YYYYMMDD"))){
-        console.log("date-difference", (moment(favoriteEvents[i][0]).format("YYYYMMDD") > (moment().format("YYYYMMDD"))));
         var newEventContainer = $("<tr>")
         newEventContainer.attr("data-event", i)
         var newEventDate = $("<td>");
@@ -241,9 +220,8 @@ $(document).ready(function() {
         $("#favoriteEventsContainer").append(newEventContainer)
         }
       }
-
     }
-
+// when the clear events button is clicked
     $("#clearEvents").on('click', function(e){
       e.preventDefault();
       clearEvents();
@@ -255,18 +233,18 @@ $(document).ready(function() {
       favoriteEvents = [];
       localStorage.clear();
     }
-
+// when the BandiFi title is clicked in the nav bar, brings back to landing page
     $("#backToLanding").on('click', function(e){
       e.preventDefault();
       $("#landingPage").css("display","");
       $("#mainPage").css("display","none");
     })
-// https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
-    function compare(a, b) {
-      if (a[0] > b[0]) return 1;
-      if (b[0] > a[0]) return -1;
     
-      return 0;
-    }
+
+//page animations
+    $(".panel").slideDown(1500);
+    // $(".columns").fadeIn();
+    
+  
 
   })
