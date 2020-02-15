@@ -138,7 +138,7 @@ audio{
 
 .main-page-title {
   text-align: center;
-  font-size: 35px;
+  font-size: 50px;
   font-weight: bold; 
   color: black;
   margin-top: 10px;
@@ -147,8 +147,8 @@ audio{
 .landing-subtitle {
   text-align: center;
   font-size: 22px;
-  /* padding-top: 7px; */
-  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 body{
@@ -180,7 +180,7 @@ body{
 
 .wrapper .panel {
   margin: 0 auto;
-  width: 700px;
+  max-width: 700px;
   border-radius: 2px solid;
   padding: 10px;
   background: rgb(255,255,255)!important;
