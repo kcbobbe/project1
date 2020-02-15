@@ -11,7 +11,6 @@ $(document).ready(function() {
   // related artist API -- Taste Dive
   var tasteDiveApiKey = "355215-KatieBob-H8EY3UTU"
   
-  
   function getRelated(artistName){
     $("#relatedArtists").text("");
     $.ajax({
@@ -43,7 +42,6 @@ $(document).ready(function() {
 // iTunes API
 
     var parsedResponse = "";
-    
     function getItunes(artistName){
       $("#songContainer").text("");
       $.ajax({
@@ -150,7 +148,6 @@ $(document).ready(function() {
     
     // searches
     //search on landing page
-
     $("#landingPageForm").on('submit', function(e){
       e.preventDefault();
       var artistSearch2 = $("#landingSearchField").val();
@@ -210,7 +207,7 @@ $(document).ready(function() {
       $("#favoriteEventsContainer").text("");
       for (var i = 0; i < favoriteEvents.length; i++){
         //only shows up if the event is still in the future
-        if ((moment(favoriteEvents[i][0])).format("YYYYMMDD") > (moment().format("YYYYMMDD"))){
+        if ((moment(favoriteEvents[i][0])).format("YYYYMMDD") >= (moment().format("YYYYMMDD"))){
         var newEventContainer = $("<tr>")
         newEventContainer.attr("data-event", i)
         var newEventDate = $("<td>");
@@ -248,7 +245,4 @@ $(document).ready(function() {
 //page animations
     $(".panel").slideDown(1500);
     // $(".columns").fadeIn();
-    
-  
-
   })
