@@ -154,22 +154,26 @@ $(document).ready(function() {
     $("#landingPageForm").on('submit', function(e){
       e.preventDefault();
       var artistSearch2 = $("#landingSearchField").val();
-      $("#landingSearchField").val("");
-      $("#landingPage").css("display","none");
-      $("#mainPage").css("display","");
-      getEventData(artistSearch2)
-      getItunes(artistSearch2);
-      getRelated(artistSearch2);
+      if (artistSearch2 !=""){
+        $("#landingSearchField").val("");
+        $("#landingPage").css("display","none");
+        $("#mainPage").css("display","");
+        getEventData(artistSearch2)
+        getItunes(artistSearch2);
+        getRelated(artistSearch2);
+      }
     })
 
     //submit search
     $("#search-form").on('submit',function(e){
       e.preventDefault();
       var artistSearch = $("#searchField").val();
-      getEventData(artistSearch);
-      getItunes(artistSearch);
-      getRelated(artistSearch);
-      $("#searchField").val("");
+      if (artistSearch !=""){
+        getEventData(artistSearch);
+        getItunes(artistSearch);
+        getRelated(artistSearch);
+        $("#searchField").val("");
+      }
     })
 
 
